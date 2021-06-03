@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>MeteoroLab</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form >
+    <ion-card-content>
+      <ion-item>
+        <ion-input type="text" placeholder="Nombre de la Ciudad" class="form-control" #cityName>
+            <ion-icon name="mail-outline"></ion-icon>
+          </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Codigo Ciudad" class="form-control" #cityCode>
+            <ion-icon name="lock-closed" ></ion-icon>
+          </ion-input>
+      </ion-item>
+      <ion-col>
+        <ion-button fill="clear"  class="ion-no-padding" (click)="submitLocation(cityName, cityCode)">Obtener Información
+        </ion-button>
+      </ion-col>
+  
+  <div *ngIf="weather" class="card card-body text-center">
+      <h1 class="h4">Información Detallada</h1>
+        <p>Ciudad: {{weather.name}}</p>
+        <p>Latitud: {{weather.coord.lat}}</p>
+        <p>Longitud: {{weather.coord.lon}}</p>
+        <p>Humedad: {{weather.main.humidity}} %</p>
+        <p>Presion: {{weather.main.pressure}}</p>
+        <p>Temperatura: {{weather.main.temp}} °C</p>
+        <p>Descripcion: {{weather.weather[0].description }}</p>
+      </div>
+    </ion-card-content>
